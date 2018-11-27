@@ -100,9 +100,11 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			    <tr class="table-secondary" ng-repeat="issue in issues">
+			    <tr ng-repeat="issue in issues" ng-class="issue.eta == 0 ? 'table-danger' : 'table-secondary' ">
 			      <th scope="row">{{issue.eta}}</th>
-			      <th scope="row">{{issue.title}}</th>
+			      <th scope="row">
+			      	<a ng-href="{{issue.web_url}}">{{issue.title}}</a>
+			      </th>
 			      <td>
 			      	<img ng-src="{{issue.assignee.avatar_url}}" width="25px" height="25px">
 			      	{{issue.assignee.name}}
