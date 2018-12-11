@@ -132,7 +132,7 @@
 				    		<img ng-src="{{assignee.avatar_url}}" width="50px" height="50px">
  				    	</div>
 				    	<div class="col-11">
-				    		<h5>{{assignee.name}} | {{assignee.percentage}}%</h5>
+				    		<h5>{{assignee.name}} | {{assignee.percentage}}% | Man Power : {{assignee.totalETA}}hours</h5>
 				    		<div class="progress">
 				    		  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{assignee.percentage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{assignee.percentage}}%"></div>
 				    		</div>
@@ -141,6 +141,9 @@
 				    			<li ng-repeat="aissue in assignee.issues">
 				    				<span ng-class="aissue.eta == 0 ? 'badge badge-danger badge-pill' : 'badge badge-primary badge-pill'">{{aissue.eta}}</span>
 				    				<a href="{{aissue.web_url}}">{{aissue.title}}</a>
+				    				<span ng-show="aissue.labels.includes('✓ fixed') || aissue.labels.includes('✓ fixed-in-branch')" class="badge badge-pill badge-success">Fixed</span>
+				    				<span ng-show="aissue.labels.includes('Merge Request')" class="badge badge-pill badge-info">Merge Request</span>
+				    				<span ng-show="aissue.labels.includes('➩ working')" class="badge badge-pill badge-warning">Working</span>
 				    			</li>
 				    		</ul>
 				    	</div>
